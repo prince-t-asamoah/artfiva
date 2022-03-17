@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+
 import { SearchBar } from "../SearchBar/SearchBar.js";
 import { SearchResults } from "../SearchResults/SearchResults.js";
 import { PlayList } from "../PlayList/PlayList.js";
@@ -14,6 +15,18 @@ class App extends React.Component {
           artist: 'David Guetta',
           album: 'Nothing But The Beat',
           id: 1
+        },
+        {
+          name: 'Around The World',
+          artist: 'Daft Punk',
+          album: 'Homework',
+          id: 2
+        },
+        {
+          name: 'The Veldt',
+          artist: 'Deadmau5',
+          album: 'The Veldt EP',
+          id: 3
         }
       ]
     }
