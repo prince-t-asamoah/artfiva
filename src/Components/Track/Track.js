@@ -15,20 +15,17 @@ export class Track extends React.Component {
     this.renderAction();
   }
   render() {
-    const buttonAction = this.state.isRemoval ? '+' : '-';
+    const buttonAction = this.state.isRemoval ? "+" : "-";
+    const trackName = this.props.track.name;
+    const trackArtist = this.props.track.artist;
+    const trackAlbum = this.props.track.album;
     return (
       <div className="Track">
         <div className="Track-information">
-          <h3>{/*track name will go here*/}Titanium</h3>
-          <p>
-            {/*track artist will go here | track album will go here*/}David
-            Guetta | Nothing But The Beat
-          </p>
+          <h3>{trackName}</h3>
+          <p>{trackArtist} | {trackAlbum}</p>
         </div>
-        <button className="Track-action">
-          {/* + or - will go here */}
-          {buttonAction}
-        </button>
+        <button className="Track-action">{buttonAction}</button>
       </div>
     );
   }
