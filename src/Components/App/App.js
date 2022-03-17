@@ -1,7 +1,7 @@
 import './App.css';
-import SearchBar from '../SearchBar/SearchBar.js';
-import SearchResults from '../SearchResults/SearchResults.js';
-import PlayList from '../PlayList/PlayList.js';
+import {SearchBar} from '../SearchBar/SearchBar.js';
+import {SearchResults} from '../SearchResults/SearchResults.js';
+import {PlayList} from '../PlayList/PlayList.js';
 
 function App() {
   return (
