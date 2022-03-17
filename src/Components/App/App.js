@@ -4,10 +4,20 @@ import { SearchBar } from "../SearchBar/SearchBar.js";
 import { SearchResults } from "../SearchResults/SearchResults.js";
 import { PlayList } from "../PlayList/PlayList.js";
 
-// class App extends React.Component {
-
-// }
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchResults : [
+        {
+          name: 'Titanium',
+          artist: 'David Guetta',
+          album: 'Nothing But The Beat',
+          id: 1
+        }
+      ]
+    }
+  }
   render() {
     return (
       <div>
@@ -17,7 +27,7 @@ class App extends React.Component {
         <div className="App">
           <SearchBar />
           <div className="App-playlist">
-            <SearchResults />
+            <SearchResults/>
             <PlayList />
           </div>
         </div>
