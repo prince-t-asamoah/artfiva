@@ -30,27 +30,21 @@ class App extends React.Component {
         }
       ],
       playListName: 'newPlayList',
-      playListTracks: [
-          {
-          name: 'Titanium',
-          artist: 'David Guetta',
-          album: 'Nothing But The Beat',
-          id: 1
-        },
-        {
-          name: 'Around The World',
-          artist: 'Daft Punk',
-          album: 'Homework',
-          id: 2
-        },
-        {
-          name: 'The Veldt',
-          artist: 'Deadmau5',
-          album: 'The Veldt EP',
-          id: 3
-        }
-      ]
+      playListTracks: []
     }
+    this.addTrack = this.addTrack.bind(this);
+  }
+
+  addTrack(track) {
+    const tracks = this.state.playListTracks;
+    const addTrackSearch = tracks.find(savedTrack => {
+      return savedTrack.id === track.id
+    });
+    if (addTrackSearch) {
+      return;
+    }
+    tracks.push(track);
+    this.setState({playListTracks:tracks});
   }
 
   render() {
