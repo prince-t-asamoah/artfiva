@@ -4,18 +4,14 @@ import "./Track.css";
 export class Track extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isRemoval: null };
+   this.addTrack = this.addTrack.bind(this);
   }
 
-  renderAction() {
-    this.setState({ isRemoval: true });
-  }
-
-  componentDidMount() {
-    this.renderAction();
+  addTrack () {
+    this.props.onAdd(this.props.track);
   }
   render() {
-    const buttonAction = this.state.isRemoval ? "+" : "-";
+    const buttonAction = this.props.isRemoval === true ? "-" : "+";
     const trackName = this.props.track.name;
     const trackArtist = this.props.track.artist;
     const trackAlbum = this.props.track.album;
