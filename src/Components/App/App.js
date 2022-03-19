@@ -70,6 +70,7 @@ class App extends React.Component {
             <PlayList
               playListName={this.state.playListName}
               playListTracks={this.state.playListTracks}
+              onRemove={this.removeTrack}
             />
           </div>
         </div>
