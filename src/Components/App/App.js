@@ -34,6 +34,7 @@ class App extends React.Component {
     }
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
+    this.updatePlayListName = this.updatePlayListName.bind(this);
   }
 
   addTrack(track) {
@@ -52,6 +53,10 @@ class App extends React.Component {
     const trackIndex = tracks.indexOf(track);
     tracks.splice(trackIndex, 1);
     this.setState({playListTracks: tracks});
+  }
+
+  updatePlayListName(name) {
+    this.setState({playListName: name});
   }
 
   render() {
