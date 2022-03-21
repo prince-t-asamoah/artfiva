@@ -2,7 +2,7 @@
 // const CLIENT_ID = '5a3f2e12dce84254b9e74f21ed388014';
 // const REDIRECT_URI = 'http://localhost:3000/';
 
-const spotify = {
+const Spotify = {
     accessToken: null,
     tokenExpiresIn: null,
     CLIENT_ID: '5a3f2e12dce84254b9e74f21ed388014',
@@ -25,7 +25,29 @@ const spotify = {
                 window.history = `https://accounts.spotify.com/authorize?client_id=${this.CLIENT_ID}&response_type=token&scope=playlist-modify-public&redirect_uri=${this.REDIRECT_URI}`;
             }
         }
+    },
+    search(term) {
+        const token = this.getAccessToken();
+        fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(response => response.json())
+        .then(jsonResponse => {
+            if (!jsonResponse.tracks) {
+                return [];
+            } else {
+                return jsonResponse.tracks.items.map(track => ({
+                    id: track.id,
+                    name: track.name,
+                    artist: track.artists[0].name,
+                    album: track.album,
+                    uri: track.uri
+                }));
+            }
+        })
     }
 }
 
-export default spotify;
+export default Spotify;
