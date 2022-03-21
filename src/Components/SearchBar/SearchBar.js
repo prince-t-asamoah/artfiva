@@ -7,8 +7,8 @@ export class SearchBar extends React.Component {
     this.searchTrack = this.searchTrack.bind(this);
   }
 
-  searchTrack(e) {
-    this.props.onSearch(e.target.value);
+  searchTrack() {
+    this.props.onSearch(this.state.search);
   }
 
   render() {
