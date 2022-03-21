@@ -5,10 +5,15 @@ export class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.searchTrack = this.searchTrack.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
   }
 
   searchTrack() {
     this.props.onSearch(this.state.search);
+  }
+
+  handleSearchChange(e) {
+    this.setState({search: e.target.value});
   }
 
   render() {
