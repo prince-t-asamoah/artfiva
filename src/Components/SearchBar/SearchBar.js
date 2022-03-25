@@ -14,16 +14,16 @@ export class SearchBar extends React.Component {
   searchTrack() {
     this.props.onSearch(this.state.search);
   }
-
-  handleSearchChange(event) {
-    this.setState({search: event.target.value});
+  
+  handleSearchChange({target}) {
+    this.setState({search: target.value});
   }
 
   render() {
     return (
       <div className="SearchBar">
         <input placeholder="Enter A Song, Album, or Artist" onChange={this.handleSearchChange}/>
-        <button className="SearchButton">SEARCH</button>
+        <button className="SearchButton" onClick={this.searchTrack}>SEARCH</button>
       </div>
     );
   }
