@@ -14,6 +14,7 @@ const Spotify = {
             //Gets access token and its expiration time from URL
             let accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
             let tokenExpiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
+
             if (accessTokenMatch && tokenExpiresInMatch) {
                 this.accessToken = accessTokenMatch[1];
                 this.tokenExpiresIn = Number(tokenExpiresInMatch[1]);
@@ -22,31 +23,30 @@ const Spotify = {
                 window.history.pushState('Access Token', null, '/');
                 return this.accessToken;
             } else {
-                window.history = `https://accounts.spotify.com/authorize?client_id=${this.CLIENT_ID}&response_type=token&scope=playlist-modify-public&redirect_uri=${this.REDIRECT_URI}`;
+                window.location.href = `https://accounts.spotify.com/authorize?client_id=${this.CLIENT_ID}&response_type=token&scope=playlist-modify-public&redirect_uri=${this.REDIRECT_URI}`;
             }
         }
     },
-    search(term) {
-        const token = this.getAccessToken();
-        fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
+    async searchTrack(TERM) {
+        const accessToken = this.getAccessToken();
+        const response = await fetch(`https://api.spotify.com/v1/search?type=track&q=${TERM}`, {
             headers: {
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${accessToken}`
             }
-        })
-        .then(response => response.json())
-        .then(jsonResponse => {
-            if (!jsonResponse.tracks) {
-                return [];
-            } else {
-                return jsonResponse.tracks.items.map(track => ({
-                    id: track.id,
-                    name: track.name,
-                    artist: track.artists[0].name,
-                    album: track.album,
-                    uri: track.uri
-                }));
-            }
-        })
+        });
+        const responseObj = await response.json();
+        if (!responseObj.tracks) {
+            return [];
+        } else {
+            const searchResults = responseObj.tracks.items.map(track => ({
+                id: track.id,
+                name: track.name,
+                artist: track.artists[0].name,
+                albumr: track.album.name,
+                uri: track.uri
+            }));
+            return searchResults;
+        }
     }
 }
 
