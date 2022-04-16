@@ -15,6 +15,9 @@ h1 {
   font-family: "Poppins", sans-serif;
   font-size: 1.88rem;
   color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 h1 .highlight {
@@ -36,13 +39,31 @@ h2 {
   font-family: "Work Sans", sans-serif;
   font-weight: 500;
   color: #fff;
+  margin-top: 3.4rem;
+}
+
+.Tagline {
+  text-align: center;
+  padding-top: 5rem;
+  font-size: 3rem;
 }
 
 .App-playlist {
   display: flex;
   justify-content: space-between;
   width: 100%;
+
 }
+
+::-webkit-scrollbar {
+      width: 10px;
+      background-color: rgba(108, 65, 233, .7);
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background-color: #010c3f;
+      border-radius: 10px;
+  }
 
 @media only screen and (max-width: 1020px) {
   .App-playlist {
