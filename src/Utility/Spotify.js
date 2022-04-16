@@ -27,26 +27,27 @@ const Spotify = {
             }
         }
     },
-    async searchTrack(TERM) {
+    searchTrack(TERM) {
         const accessToken = this.getAccessToken();
-        const response = await fetch(`https://api.spotify.com/v1/search?type=track&q=${TERM}`, {
-            headers: {
+        return fetch(`https://api.spotify.com/v1/search?type=track&q=${TERM}`, {
+             headers: {
                 Authorization: `Bearer ${accessToken}`
             }
-        });
-        const responseObj = await response.json();
-        if (!responseObj.tracks) {
-            return [];
-        } else {
-            const searchResults = responseObj.tracks.items.map(track => ({
-                id: track.id,
-                name: track.name,
-                artist: track.artists[0].name,
-                albumr: track.album.name,
-                uri: track.uri
-            }));
-            return searchResults;
-        }
+        }).then(response => {
+            return response.json();
+        }).then(responseObj => {
+            if (!responseObj.tracks) {
+                return [];
+            } else {
+                return responseObj.tracks.items.map(track => ({
+                    id: track.id,
+                    name: track.name,
+                    artist: track.artists[0].name,
+                    album: track.album.name,
+                    uri: track.uri
+                }));
+            }
+        }).catch (error => console.log(error));
     }
 }
 
