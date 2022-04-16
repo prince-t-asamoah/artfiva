@@ -6,7 +6,7 @@ const Spotify = {
     accessToken: null,
     tokenExpiresIn: null,
     CLIENT_ID: '5a3f2e12dce84254b9e74f21ed388014',
-    REDIRECT_URI: 'http://localhost:3000/',
+    REDIRECT_URI: 'http://artfiva.surge.sh',
     getAccessToken() {
         if (this.accessToken) {
             return this.accessToken;
