@@ -64,10 +64,11 @@ class App extends React.Component {
     return (
       <div>
         <h1>
-          Ja<span className="highlight">mmm</span>ing
+          Art<span className="highlight">fi</span>va
         </h1>
         <div className="App">
-          <SearchBar onSearch={this.searchTrack}/>
+          <p className="Tagline">Create a memorable playlist for your favorite songs.</p>
+          <SearchBar onSearch={this.searchTrack} />
           <div className="App-playlist">
             <SearchResults
               searchResults={this.state.searchResults}
